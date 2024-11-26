@@ -9,15 +9,15 @@ export default function PuppyList({ setSelectedPuppyId }) {
   // TODO: Get data from getPuppies query
   const {data: puppies, isLoading, error } = useGetPuppiesQuery();
   console.log(puppies);
-console.log(useGetPuppiesQuery());
+
   return(
     <article>
       <h2>Roster</h2>
       <ul className="puppies">
-        {/* {isLoading && <li>Loading puppies...</li>}
+        {isLoading && <li>Loading puppies...</li>}
         {error && <li>Error loading puppies: {error.message}</li>}
-        {puppies.length > 0 ? (
-          puppies.map((p) => (
+        {puppies?.data?.players.length > 0 ? (
+          puppies?.data?.players.map((p) => (
             <li key={p.id}>
               <h3>{p.name} #{p.id}</h3>
               <figure>
@@ -30,7 +30,7 @@ console.log(useGetPuppiesQuery());
           ))
         ) : (
           <li>No puppies found.</li>
-        )} */}
+        )}
       </ul>
     </article>
   );
