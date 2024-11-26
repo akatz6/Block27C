@@ -1,3 +1,5 @@
+import { useGetPuppiesQuery } from "./puppySlice";
+
 /**
  * @component
  * Shows a list of puppies in the roster.
@@ -5,7 +7,8 @@
  */
 export default function PuppyList({ setSelectedPuppyId }) {
   // TODO: Get data from getPuppies query
-
+  const {data: puppies} = useGetPuppiesQuery();
+  
   return (
     <article>
       <h2>Roster</h2>

@@ -1,3 +1,5 @@
+import { useGetPuppyQuery, useDeletePuppyMutation } from "./puppySlice";
+
 /**
  * @component
  * Shows comprehensive information about the selected puppy, if there is one.
@@ -5,12 +7,9 @@
  */
 export default function PuppyDetails({ selectedPuppyId, setSelectedPuppyId }) {
   // TODO: Grab data from the `getPuppy` query
-
+const {data: puppy} = useGetPuppyQuery(); //(how to do delete mutation)
   // TODO: Use the `deletePuppy` mutation to remove a puppy when the button is clicked
-
-  function removePuppy(id) {
-    setSelectedPuppyId();
-  }
+const [deletePuppy,result] = useDeletePuppyMutation();
 
   // There are 3 possibilities:
   let $details;
@@ -31,7 +30,7 @@ export default function PuppyDetails({ selectedPuppyId, setSelectedPuppyId }) {
         </h3>
         <p>{puppy.breed}</p>
         <p>Team {puppy.team?.name ?? "Unassigned"}</p>
-        <button onClick={() => removePuppy(puppy.id)}>
+        <button onClick={() => deletePuppy(puppy.id)}>
           Remove from roster
         </button>
         <figure>

@@ -14,10 +14,31 @@ The mutation endpoints should invalidate the "Puppy" tag.
 functions for each endpoint.
 */
 
-const puppyApi = api.injectEndpoints({
-  endpoints: (build) => ({}),
+export const puppyApi = api.injectEndpoints({
+  endpoints: (build) => ({
+    getPuppy: build.query({
+      query: () => ({
+        url: "players",
+        method: "GET",
+      }),
+      providedTags: ["Puppy"],
+    }),
+    addPuppy: build.mutation({
+      query: () => ({
+        url: "players",
+        method: "POST",
+      }),
+      invalidatesTags: ["Puppy"],
+    }), 
+    deletePuppy: build.mutation({
+      query: (id) => ({
+        url:  `players/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Puppy"],
+    }),
+  }),
 });
-
 export const {
   useGetPuppiesQuery,
   useGetPuppyQuery,
