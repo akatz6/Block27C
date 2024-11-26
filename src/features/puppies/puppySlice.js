@@ -1,5 +1,4 @@
 import api from "../../store/api";
-
 /*
 TODO: Define the following 4 endpoints:
   1. getPuppies (query)
@@ -16,8 +15,15 @@ functions for each endpoint.
 
 export const puppyApi = api.injectEndpoints({
   endpoints: (build) => ({
-    getPuppy: build.query({
+    getPuppies: build.query({
       query: () => ({
+        url: "/players",
+        method: "GET",
+      }),
+      providedTags: ["Puppy"],
+    }),
+    getPuppy: build.query({
+      query: (id) => ({
         url: "players",
         method: "GET",
       }),

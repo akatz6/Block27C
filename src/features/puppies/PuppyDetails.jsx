@@ -7,9 +7,9 @@ import { useGetPuppyQuery, useDeletePuppyMutation } from "./puppySlice";
  */
 export default function PuppyDetails({ selectedPuppyId, setSelectedPuppyId }) {
   // TODO: Grab data from the `getPuppy` query
-const {data: puppy} = useGetPuppyQuery(); //(how to do delete mutation)
-  // TODO: Use the `deletePuppy` mutation to remove a puppy when the button is clicked
-const [deletePuppy,result] = useDeletePuppyMutation();
+// const {data: puppy} = useGetPuppyQuery(selectedPuppyId); //(how to do delete mutation)
+//   // TODO: Use the `deletePuppy` mutation to remove a puppy when the button is clicked
+// const [deletePuppy] = useDeletePuppyMutation();
 
   // There are 3 possibilities:
   let $details;
@@ -25,7 +25,7 @@ const [deletePuppy,result] = useDeletePuppyMutation();
   else {
     $details = (
       <>
-        <h3>
+        {/* <h3>
           {puppy.name} #{puppy.id}
         </h3>
         <p>{puppy.breed}</p>
@@ -35,7 +35,7 @@ const [deletePuppy,result] = useDeletePuppyMutation();
         </button>
         <figure>
           <img src={puppy.imageUrl} alt={puppy.name} />
-        </figure>
+        </figure> */}
       </>
     );
   }
@@ -43,7 +43,7 @@ const [deletePuppy,result] = useDeletePuppyMutation();
   return (
     <aside>
       <h2>Selected Puppy</h2>
-      {$details}
+      {/* {$details} */}
     </aside>
   );
 }

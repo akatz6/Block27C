@@ -7,26 +7,30 @@ import { useGetPuppiesQuery } from "./puppySlice";
  */
 export default function PuppyList({ setSelectedPuppyId }) {
   // TODO: Get data from getPuppies query
-  const {data: puppies} = useGetPuppiesQuery();
-  
-  return (
+  const {data: puppies, isLoading, error } = useGetPuppiesQuery();
+  console.log(puppies);
+console.log(useGetPuppiesQuery());
+  return(
     <article>
       <h2>Roster</h2>
       <ul className="puppies">
-        {isLoading && <li>Loading puppies...</li>}
-        {puppies.map((p) => (
-          <li key={p.id}>
-            <h3>
-              {p.name} #{p.id}
-            </h3>
-            <figure>
-              <img src={p.imageUrl} alt={p.name} />
-            </figure>
-            <button onClick={() => setSelectedPuppyId(p.id)}>
-              See details
-            </button>
-          </li>
-        ))}
+        {/* {isLoading && <li>Loading puppies...</li>}
+        {error && <li>Error loading puppies: {error.message}</li>}
+        {puppies.length > 0 ? (
+          puppies.map((p) => (
+            <li key={p.id}>
+              <h3>{p.name} #{p.id}</h3>
+              <figure>
+                <img src={p.imageUrl} alt={p.name} />
+              </figure>
+              <button onClick={() => setSelectedPuppyId(p.id)}>
+                See details
+              </button>
+            </li>
+          ))
+        ) : (
+          <li>No puppies found.</li>
+        )} */}
       </ul>
     </article>
   );
